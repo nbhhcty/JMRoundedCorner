@@ -54,14 +54,31 @@
     if (placeholder || borderWidth > 0 || backgroundColor) {
         placeholderImage = [[YYWebImageManager sharedManager].cache getImageForKey:transformKey];
         if (!placeholderImage) {
-            placeholderImage = [UIImage jm_setJMRadius:radius image:placeholder size:size borderColor:borderColor borderWidth:borderWidth backgroundColor:backgroundColor withContentMode:contentMode];
+            placeholderImage = [UIImage jm_setJMRadius:radius
+                                                 image:placeholder
+                                                  size:size
+                                           borderColor:borderColor
+                                           borderWidth:borderWidth
+                                       backgroundColor:backgroundColor
+                                       withContentMode:contentMode];
             [[YYWebImageManager sharedManager].cache setImage:placeholderImage forKey:transformKey];
         }
     }
     
-    [self yy_setImageWithURL:imageURL placeholder:placeholderImage options:kNilOptions progress:nil transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
-        [[YYWebImageManager sharedManager].cache setImage:image forKey:imageKey];
-        UIImage *currentImage = [UIImage jm_setJMRadius:radius image:image size:size borderColor:borderColor borderWidth:borderWidth backgroundColor:backgroundColor withContentMode:contentMode];
+    [self yy_setImageWithURL:imageURL
+                 placeholder:placeholderImage
+                     options:kNilOptions
+                    progress:nil
+                   transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
+        [[YYWebImageManager sharedManager].cache setImage:image
+                                                   forKey:imageKey];
+        UIImage *currentImage = [UIImage jm_setJMRadius:radius
+                                                  image:image
+                                                   size:size
+                                            borderColor:borderColor
+                                            borderWidth:borderWidth
+                                        backgroundColor:backgroundColor
+                                        withContentMode:contentMode];
         return currentImage;
     } transformKey:transformKey completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
     }];

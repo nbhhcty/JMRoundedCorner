@@ -11,24 +11,56 @@
 @implementation UIImage (RoundedCorner)
 
 - (UIImage *)jm_setRadius:(CGFloat)radius size:(CGSize)size {
-    return [UIImage jm_setJMRadius:JMRadiusMake(radius, radius, radius, radius) image:self size:size borderColor:nil borderWidth:0 backgroundColor:nil withContentMode:UIViewContentModeScaleToFill];
+    return [UIImage jm_setJMRadius:JMRadiusMake(radius, radius, radius, radius)
+                             image:self
+                              size:size
+                       borderColor:nil
+                       borderWidth:0
+                   backgroundColor:nil
+                   withContentMode:UIViewContentModeScaleToFill];
 }
 
-- (UIImage *)jm_setRadius:(CGFloat)radius size:(CGSize)size contentMode:(UIViewContentMode)contentMode {
-        return [UIImage jm_setJMRadius:JMRadiusMake(radius, radius, radius, radius) image:self size:size borderColor:nil borderWidth:0 backgroundColor:nil withContentMode:contentMode];
+- (UIImage *)jm_setRadius:(CGFloat)radius
+                     size:(CGSize)size
+              contentMode:(UIViewContentMode)contentMode {
+        return [UIImage jm_setJMRadius:JMRadiusMake(radius, radius, radius, radius)
+                                 image:self
+                                  size:size
+                           borderColor:nil
+                           borderWidth:0
+                       backgroundColor:nil
+                       withContentMode:contentMode];
 }
 
-+ (UIImage *)jm_setRadius:(CGFloat)radius size:(CGSize)size borderColor:(UIColor *)borderColor borderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor {
-    return [UIImage jm_setJMRadius:JMRadiusMake(radius, radius, radius, radius) image:nil size:size borderColor:borderColor borderWidth:borderWidth backgroundColor:backgroundColor withContentMode:UIViewContentModeScaleToFill];
++ (UIImage *)jm_setRadius:(CGFloat)radius
+                     size:(CGSize)size
+              borderColor:(UIColor *)borderColor
+              borderWidth:(CGFloat)borderWidth
+          backgroundColor:(UIColor *)backgroundColor {
+    return [UIImage jm_setJMRadius:JMRadiusMake(radius, radius, radius, radius)
+                             image:nil
+                              size:size
+                       borderColor:borderColor
+                       borderWidth:borderWidth
+                   backgroundColor:backgroundColor
+                   withContentMode:UIViewContentModeScaleToFill];
 }
 
-+ (UIImage *)jm_setJMRadius:(JMRadius)radius image:(UIImage *)image size:(CGSize)size borderColor:(UIColor *)borderColor borderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor withContentMode:(UIViewContentMode)contentMode {
++ (UIImage *)jm_setJMRadius:(JMRadius)radius
+                      image:(UIImage *)image
+                       size:(CGSize)size
+                borderColor:(UIColor *)borderColor
+                borderWidth:(CGFloat)borderWidth
+            backgroundColor:(UIColor *)backgroundColor
+            withContentMode:(UIViewContentMode)contentMode {
     
     if (!backgroundColor) {
         backgroundColor = [UIColor whiteColor];
     }
     if (image) {
-        image = [image scaleToSize:CGSizeMake(size.width, size.height) withContentMode:contentMode backgroundColor:backgroundColor];
+        image = [image scaleToSize:CGSizeMake(size.width, size.height)
+                   withContentMode:contentMode
+                   backgroundColor:backgroundColor];
     } else {
         image = [UIImage imageWithColor:backgroundColor];
     }
